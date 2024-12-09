@@ -23,7 +23,7 @@ const Layout = () => {
         options={{
           title: "Library",
           tabBarIcon: ({ color }) => (
-            <MaterialIcons name="library-music" size={28} color="black" />
+            <MaterialIcons name="library-music" size={28} color={color} />
           ),
         }}
         
@@ -33,7 +33,7 @@ const Layout = () => {
         options={{
           title: "Search",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="search1" size={28} color="black" />
+            <AntDesign name="search1" size={28} color={color} />
           ),
         }}
         
