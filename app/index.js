@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Button, Text, StyleSheet } from 'react-native';
 import { Audio } from 'expo-av';
+import { addToPlayList, getPlayLists, getSong } from './_components/service';
 
 export default function App() {
   const [sound, setSound] = useState(null);
@@ -64,6 +65,7 @@ export default function App() {
         ) : (
           <Button title="Pause" onPress={pause} />
         )}
+        <Button title='test' onPress={getPlayLists}/>
       </View>
     </View>
   );
