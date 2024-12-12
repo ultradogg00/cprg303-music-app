@@ -1,16 +1,21 @@
+'use client'
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from "react-native";
 import { Audio } from "expo-av";
 import { LinearGradient } from "expo-linear-gradient";
+import { getSong } from "./_components/service";
 
 export default function HomeScreen() {
   const [sound, setSound] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const audioUrl = "https://prod-1.storage.jamendo.com//?trackid=887202&format=ogg&from=app-devsite";
-
+  const songObj = getSong(1532771)
   // Function to load and play sound
-  async function play() {
+  async function play(songUrl) {
+    // a songobj.audio will be passed
+    const audioUrl = "https://prod-1.storage.jamendo.com//?trackid=887202&format=ogg&from=app-devsite";
+
     try {
       if (sound) {
         // Resume playback if sound is already loaded
@@ -178,7 +183,7 @@ export default function HomeScreen() {
       {/* Bottom Music Player */}
       <View style={styles.musicPlayerContainer}>
         <Image
-          source={{ uri: "https://via.placeholder.com/50" }}
+          source={{ uri: "https://usercontent.jamendo.com?type=album&id=404140&width=300&trackid=1532771" }}
           style={styles.playerImage}
         />
         <Text style={styles.songTitle}>Remember Me</Text>
