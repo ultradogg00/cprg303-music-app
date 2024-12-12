@@ -73,7 +73,7 @@ export default function HomeScreen() {
         <View style={styles.headerContent}>
 
           <Image
-            source={{ uri: "https://via.placeholder.com/50" }} // Replace with actual profile image URL
+            source={require("../assets/Screenshot-profilePic.png")}
             style={styles.profileImage}
           />
 
@@ -110,12 +110,12 @@ export default function HomeScreen() {
 
           <View style={styles.cardContainer}>
             {[
-              { title: "Jazz Music", image: "https://via.placeholder.com/100" },
-              { title: "Newly Released", image: "https://via.placeholder.com/100" },
-              { title: "Anything Goes", image: "https://via.placeholder.com/100" },
-              { title: "Your Daily Mix", image: "https://via.placeholder.com/100" },
-              { title: "Harry's House", image: "https://via.placeholder.com/100" },
-              { title: "Lo-Fi Beats", image: "https://via.placeholder.com/100" },
+              { title: "Jazz Music", image: "https:\/\/usercontent.jamendo.com?type=artist&id=376782&width=300" },
+              { title: "Newly Released", image: "https:\/\/usercontent.jamendo.com?type=album&id=404140&width=300&trackid=1532771" },
+              { title: "Anything Goes", image: "https://usercontent.jamendo.com?type=album&id=145774&width=300&trackid=1214935" },
+              { title: "Your Daily Mix", image: "https://usercontent.jamendo.com?type=album&id=24&width=300&trackid=169" },
+              { title: "Harry's House", image: "https://usercontent.jamendo.com?type=album&id=477294&width=300&trackid=1932670" },
+              { title: "Lo-Fi Beats", image: "https://usercontent.jamendo.com?type=album&id=144705&width=300&trackid=1204669" },
             ].map((item, index) => (
 
               <TouchableOpacity key={index} style={styles.card}>
@@ -135,9 +135,9 @@ export default function HomeScreen() {
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <View style={styles.gridContainer}>
               {[
-                { title: "(Remastered)", image: "https://via.placeholder.com/100" },
-                { title: "Lana Del Rey", image: "https://via.placeholder.com/100" },
-                { title: "Marvin Gaye", image: "https://via.placeholder.com/100" },
+                { title: "In Tune (J. Glaze)", image: "https://usercontent.jamendo.com?type=album&id=139585&width=300&trackid=1161940" },
+                { title: "You and Me", image: "https://usercontent.jamendo.com?type=album&id=138887&width=300&trackid=1157358" },
+                { title: "Survive", image: "https://usercontent.jamendo.com?type=album&id=159568&width=300&trackid=1353511" },
               ].map((item, index) => (
 
                 <View key={index} style={styles.gridItem}>
@@ -157,8 +157,8 @@ export default function HomeScreen() {
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <View style={styles.gridContainerHorizontal}>
               {[
-                { title: "Acoustic Guitar Playlist", subtitle: "Songs to enjoy your day with lovely acoustic sounds", image: "https://via.placeholder.com/150" },
-                { title: "Top Hits Canada", subtitle: "Top songs trending in Canada", image: "https://via.placeholder.com/150" },
+                { title: "Acoustic Guitar Playlist", subtitle: "Songs to enjoy your day with lovely acoustic sounds", image: "https://usercontent.jamendo.com?type=album&id=292101&width=300&trackid=1480482" },
+                { title: "Top Hits Canada", subtitle: "Top songs trending in Canada", image: "https://usercontent.jamendo.com?type=album&id=140048&width=300&trackid=1165005" },
               ].map((item, index) => (
                 <View key={index} style={styles.recommendCard}>
                   <Image source={{ uri: item.image }} style={styles.recommendImage} />
