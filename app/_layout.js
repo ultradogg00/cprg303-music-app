@@ -7,7 +7,12 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import AntDesign from '@expo/vector-icons/AntDesign';
 const Layout = () => {
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: "#571AFF",
+        headerShown: false,
+      }}
+    >
         <Tabs.Screen
         name="index"
         options={{
