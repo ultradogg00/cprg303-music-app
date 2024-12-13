@@ -6,21 +6,18 @@ import { Tabs, useRouter } from 'expo-router'
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import AudioProvider from './_components/audioProvider';
+import AudioProvider from '../_components/audioProvider';
 
 const Layout = () => {
   const router = useRouter();
   console.log(router.routes);
   return (
     <AudioProvider>
+      {/* <View style={{flex: 1}}> */}
         <Tabs 
           screenOptions={{ 
             tabBarActiveTintColor: "#571AFF",
             headerShown: false,
-            tabBarStyle: {
-              // paddingLeft: , 
-            },
-            
           }}
         >
             <Tabs.Screen
@@ -58,7 +55,7 @@ const Layout = () => {
             name="_components/audioProvider"
             options={{
               title: "f",
-              tabBarButton: (props) => null
+              tabBarButton: () => null,
             }}
             
             ></Tabs.Screen>
