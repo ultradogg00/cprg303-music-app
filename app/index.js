@@ -4,10 +4,13 @@ import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from "rea
 import { Audio } from "expo-av";
 import { LinearGradient } from "expo-linear-gradient";
 import { getSong } from "./_components/service";
-
+import Slider from "@react-native-community/slider";
+import BottomMusicPlayer from "./_components/bottomMusicPlayer";
 export default function HomeScreen() {
   const [sound, setSound] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+
+  // const [isPlaying, setIsPlaying] = useState(false);
+
 
   const audioUrl = "https://prod-1.storage.jamendo.com//?trackid=887202&format=ogg&from=app-devsite";
   const songObj = getSong(1532771)
@@ -181,7 +184,7 @@ export default function HomeScreen() {
       </ScrollView>
 
       {/* Bottom Music Player */}
-      <View style={styles.musicPlayerContainer}>
+      {/* <View style={styles.musicPlayerContainer}>
         <Image
           source={{ uri: "https://usercontent.jamendo.com?type=album&id=404140&width=300&trackid=1532771" }}
           style={styles.playerImage}
@@ -197,7 +200,8 @@ export default function HomeScreen() {
             style={styles.playIcon}
           />
         </TouchableOpacity>
-      </View>
+      </View> */}
+      <BottomMusicPlayer/>
     </View>
   );
 }

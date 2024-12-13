@@ -1,17 +1,34 @@
 
 
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from "react-native";
 import React from 'react'
+import { useContext } from 'react';
+import { useAudio } from './audioProvider';
 
-const bottomMusicPlayer = ({songObj}) => {
+const BottomMusicPlayer = () => {
+    const { play, pause,  isPlaying, setIsPlaying, currentTrack } = useAudio();
+
+    const HandlePlayPause =() =>{
+        console.log(isPlaying)
+        if(!isPlaying){
+          play("https://prod-1.storage.jamendo.com//?trackid=887202&format=ogg&from=app-devsite")
+          setIsPlaying(true)
+        }
+        else{
+            pause();
+            setIsPlaying(false)
+        }
+    }
+    
   return (
     <View style={styles.musicPlayerContainer}>
     <Image
-      source={{ uri: songObj.album_image }}
+    //   source={{ uri: songObj.album_image }}
+      source={{ uri: "https://usercontent.jamendo.com?type=album&id=404140&width=300&trackid=1532771" }}
       style={styles.playerImage}
     />
-    <Text style={styles.songTitle}>{songObj.name}</Text>
-    <TouchableOpacity onPress={isPlaying ? pause : play}>
+    <Text style={styles.songTitle}>name</Text>
+    <TouchableOpacity onPress={HandlePlayPause}>
       <Image
         source={{
           uri: isPlaying
@@ -22,10 +39,13 @@ const bottomMusicPlayer = ({songObj}) => {
       />
     </TouchableOpacity>
   </View>
+
+
+
   )
 }
 
-export default bottomMusicPlayer
+export default BottomMusicPlayer
 
 
 const styles = StyleSheet.create({
