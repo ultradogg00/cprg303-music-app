@@ -8,7 +8,7 @@ export const getSong=async(id)=>{
     try {
 
         
-        let Song_id_URl  ="https://api.jamendo.com/v3.0/tracks/?client_id=5c19d8f2&format=jsonpretty&limit=2&audioformat=mp31&speed=high+veryhigh&include=musicinfo&groupby=artist_id&id="+id;
+        let Song_id_URl  =`https://api.jamendo.com/v3.0/tracks/?client_id=5c19d8f2&format=jsonpretty&limit=2&audioformat=mp31&speed=high+veryhigh&include=musicinfo&groupby=artist_id&id=${id}`;
         const response = await fetch(Song_id_URl)
         let data =  await response.json()
          return data.results[0]
@@ -34,31 +34,28 @@ export const getPlayLists = async () => {
                 
             }
 }
+
+export const getApiAlbum=async(id)=>{
+    try {
+
+        
+        let URl  = `https://api.jamendo.com/v3.0/albums/tracks/?client_id=5c19d8f2&format=json&id=${id}`
+       
+        const response = await fetch(URl)
+        let data =  await response.json()
+        console.log(data.results)
+        return data.results
+         console.log(data.results)
+        
+    } catch (error) {
+       throw error
+        
+    }
+};
 export const addToPlayList = async (params) => {
     
 }
 
-// export const getPostsID=async(id)=>{
-//     try {
-//         const response = await api.get('/tasks/'+id);
-//         return response.data
-        
-//     } catch (error) {
-//        throw  id +error
-        
-//     }
-// };
-
-// export const deletePostApi=async(id)=>{
-//     try {
-//         const response = await api.delete('/tasks/'+id);
-//         return response.data
-        
-//     } catch (error) {
-//        throw error
-        
-//     }
-// }
 
 
 

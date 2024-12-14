@@ -8,6 +8,7 @@ const AudioProvider = ({ children }) => {
   const [sound, setSound] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(null);
+  const [song, setSong] = useState(null)
 
   async function play(songUrl) {
     console.dir(isPlaying)
@@ -58,7 +59,7 @@ const AudioProvider = ({ children }) => {
   }, [sound]);
 
   return (
-    <AudioContext.Provider value={{ play, pause, isPlaying, setIsPlaying, currentTrack }}>
+    <AudioContext.Provider value={{ play, pause, isPlaying, setIsPlaying, currentTrack, song,setSong }}>
       {children}
     </AudioContext.Provider>
   );

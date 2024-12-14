@@ -6,6 +6,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { getSong } from "../_components/service";
 import Slider from "@react-native-community/slider";
 import BottomMusicPlayer from "../_components/bottomMusicPlayer";
+import { Link } from "expo-router";
 export default function HomeScreen() {
   const [sound, setSound] = useState(null);
 
@@ -118,17 +119,19 @@ export default function HomeScreen() {
 
           <View style={styles.cardContainer}>
             {[
-              { title: "Jazz Music", image: "https:\/\/usercontent.jamendo.com?type=artist&id=376782&width=300" },
-              { title: "Newly Released", image: "https:\/\/usercontent.jamendo.com?type=album&id=404140&width=300&trackid=1532771" },
-              { title: "Anything Goes", image: "https://usercontent.jamendo.com?type=album&id=145774&width=300&trackid=1214935" },
-              { title: "Your Daily Mix", image: "https://usercontent.jamendo.com?type=album&id=24&width=300&trackid=169" },
-              { title: "Harry's House", image: "https://usercontent.jamendo.com?type=album&id=477294&width=300&trackid=1932670" },
-              { title: "Lo-Fi Beats", image: "https://usercontent.jamendo.com?type=album&id=144705&width=300&trackid=1204669" },
+              { title: "Sky Dragons", image: "https://usercontent.jamendo.com?type=album&id=573197&width=300" ,id:"573197" },
+              { title: "EL ARTE DE AMAR- BOSSA NOVA", image: "https://usercontent.jamendo.com?type=album&id=589582&width=300" ,id:"589582"},
+              { title: "i-motions - EP", image: "https://usercontent.jamendo.com?type=album&id=472284&width=300", id:"472284" },
+              { title: "Your Secret Album ", image: "https://usercontent.jamendo.com?type=album&id=188568&width=300",id:"188568" },
+              { title: "MainStay", image: "https://usercontent.jamendo.com?type=album&id=195682&width=300", id:"195682" },
+              { title: "ShiHo", image: "https://usercontent.jamendo.com?type=album&id=156519&width=300",id:"156519"},
             ].map((item, index) => (
-
-              <TouchableOpacity key={index} style={styles.card}>
+              
+              <TouchableOpacity key={index} style={styles.card} >
+                <Link href={`/details/${item.id}`} style={{ flex: 1 }}>
                 <Image source={{ uri: item.image }} style={styles.cardImage} />
                 <Text style={styles.cardText}>{item.title}</Text>
+                </Link>
               </TouchableOpacity>
 
             ))}
