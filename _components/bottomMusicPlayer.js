@@ -6,12 +6,12 @@ import { useContext } from 'react';
 import { useAudio } from './audioProvider';
 
 const BottomMusicPlayer = () => {
-    const { play, pause,  isPlaying, setIsPlaying, currentTrack } = useAudio();
+    const { play, pause,  isPlaying, setIsPlaying, songObj, setSongObj,albumImg } = useAudio();
 
-    const HandlePlayPause =() =>{
+    const HandlePlayPause =(obj) =>{
         console.log(isPlaying)
         if(!isPlaying){
-          play("https://prod-1.storage.jamendo.com//?trackid=887202&format=ogg&from=app-devsite")
+          play(obj)
           setIsPlaying(true)
         }
         else{
@@ -23,12 +23,14 @@ const BottomMusicPlayer = () => {
   
   return (
   <View style={styles.musicPlayerContainer}>
-    <Image
+    {songObj !== null ? (
+      <View style={styles.musicPlayerContainer}> 
+        <Image
     //   source={{ uri: songObj.album_image }}
-      source={{ uri: "https://usercontent.jamendo.com?type=album&id=404140&width=300&trackid=1532771" }}
+      source={{ uri: albumImg }}
       style={styles.playerImage}
     />
-    <Text style={styles.songTitle}>name</Text>
+    <Text style={styles.songTitle}>{songObj.name}</Text>
     <TouchableOpacity onPress={HandlePlayPause} style={styles.playButton}>
       <Image
         source={{
@@ -39,6 +41,10 @@ const BottomMusicPlayer = () => {
         style={styles.playIcon}
       />
     </TouchableOpacity>
+
+    </View>):(
+      <Text style={styles.songTitle}>Please select a song</Text>
+    )}
   </View>
   )
 }

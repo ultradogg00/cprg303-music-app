@@ -6,7 +6,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { getSong } from "../_components/service";
 import Slider from "@react-native-community/slider";
 import BottomMusicPlayer from "../_components/bottomMusicPlayer";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 export default function HomeScreen() {
   const [sound, setSound] = useState(null);
 
@@ -19,7 +19,7 @@ export default function HomeScreen() {
   async function play(songUrl) {
     // a songobj.audio will be passed
     const audioUrl = "https://prod-1.storage.jamendo.com//?trackid=887202&format=ogg&from=app-devsite";
-
+    
     try {
       if (sound) {
         // Resume playback if sound is already loaded
@@ -127,12 +127,12 @@ export default function HomeScreen() {
               { title: "ShiHo", image: "https://usercontent.jamendo.com?type=album&id=156519&width=300",id:"156519"},
             ].map((item, index) => (
               
-              <Link key={index} href={`/AlbumSongs?albumID=${item.id}`} style={{margin:5}}>
-                <TouchableOpacity  style={styles.card}>
+      
+                <TouchableOpacity key={index}  style={styles.card}  onPress={() => router.push(`/details/${item.id}`)} >
                   <Image source={{ uri: item.image }} style={styles.cardImage} />
                   <Text style={styles.cardText}>{item.title}</Text>
                 </TouchableOpacity>
-              </Link>
+             
 
             ))}
           </View>
@@ -291,7 +291,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingRight: 10,
     width: 170,
-    margin: 15,
+    margin: 5,
     alignItems: "center",
     justifyContent: "flex-start", 
     //create a shadow effect

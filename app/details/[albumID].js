@@ -1,19 +1,21 @@
 import { Image, Pressable, ScrollView, StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Link, useLocalSearchParams, useRouter } from 'expo-router'
-import BottomMusicPlayer from '../_components/bottomMusicPlayer';
-import { getApiAlbum } from '../_components/service';
+import { Link, useGlobalSearchParams, useLocalSearchParams, useNavigation, useRouter } from 'expo-router'
+import BottomMusicPlayer from '../../_components/bottomMusicPlayer';
+import { getApiAlbum } from '../../_components/service';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ImageBackground } from 'react-native';
-import { useAudio } from '../_components/audioProvider';
+import { useAudio } from '../../_components/audioProvider';
 import { Sound } from 'expo-av/build/Audio';
 
-const AlbumSongs = () => {
-  const { albumID } = useLocalSearchParams();
+const AlbumSongs = ({params}) => {
+  const navigator = useNavigation();
+  const { albumID } = useGlobalSearchParams();
+  console.dir(albumID)
   const [songs,setSongs] =useState([]);
   const [albumInfo,setAlbumInfo] = useState(null);
-  const { play, pause,  isPlaying, setIsPlaying, currentTrack } = useAudio();
+  const { play, pause,  isPlaying, setIsPlaying, currentTrack ,albumImg, setAlbumImg } = useAudio();
 
 
 
@@ -22,6 +24,7 @@ const AlbumSongs = () => {
       const results = await getApiAlbum(albumID);
       if (results && results.length > 0) {
         setSongs(results[0].tracks || []);
+        
         setAlbumInfo(results[0]);
       } else {
         console.error('No album data found');
@@ -31,17 +34,20 @@ const AlbumSongs = () => {
     }
   }
 
- const HandlePlayPause =(url) =>{
-        console.log(isPlaying)
-          play(url)
-          setIsPlaying(true)
+ const HandlePlayPause =(obj) =>{
+
+        setAlbumImg(albumInfo.image)
+          play(obj)
+          // setIsPlaying(true)
         
     }
+    
 
   useEffect( () =>{
     getAlbum();
     console.dir(albumInfo)
     console.dir(songs)
+    console.dir(params)
   },[albumID]
 
   )
@@ -54,6 +60,7 @@ const AlbumSongs = () => {
         style={styles.headerImage}
         resizeMode="cover"
       >
+        
         {/* Header Gradient */}
         <LinearGradient colors={['rgba(0,0,0,0.8)', 'transparent']} style={styles.headerGradient}>
           {albumInfo !== null ? (
@@ -77,7 +84,7 @@ const AlbumSongs = () => {
       )}
 
       {/* Back button */}
-      <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+      <TouchableOpacity onPress={() => navigator.goBack()} style={styles.backButton}>
         <Ionicons name="arrow-back" size={30} color="white" />
       </TouchableOpacity>
 
@@ -86,7 +93,7 @@ const AlbumSongs = () => {
         {/* Songs */}
         <ScrollView style={styles.songsContainer}>
           {songs.map((song) => (
-            <TouchableOpacity key={song.id} style={styles.songItem} onPress={() => HandlePlayPause(song.audio)}>
+            <TouchableOpacity key={song.id} style={styles.songItem} onPress={() => HandlePlayPause(song)}>
               <View style={styles.songDetails}>
                 <Text style={styles.songName}>{song.name}</Text>
                 <Text style={styles.songArtist}>{song.artist}</Text>
