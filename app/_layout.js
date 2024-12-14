@@ -52,7 +52,7 @@ const Layout = () => {
             
             ></Tabs.Screen>
             <Tabs.Screen 
-            name="_components/audioProvider"
+            name="details/[albumID]"
             options={{
               title: "f",
               tabBarButton: () => null,
