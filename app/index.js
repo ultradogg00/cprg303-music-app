@@ -120,11 +120,11 @@ export default function HomeScreen() {
           <View style={styles.cardContainer}>
             {[
               { title: "Sky Dragons", image: "https://usercontent.jamendo.com?type=album&id=573197&width=300" ,id:"573197" },
-              { title: "EL ARTE DE AMAR- BOSSA NOVA", image: "https://usercontent.jamendo.com?type=album&id=589582&width=300" ,id:""},
-              { title: "Anything Goes", image: "https://usercontent.jamendo.com?type=album&id=145774&width=300&trackid=1214935", id:"" },
-              { title: "Your Daily Mix", image: "https://usercontent.jamendo.com?type=album&id=24&width=300&trackid=169",id:"" },
-              { title: "Harry's House", image: "https://usercontent.jamendo.com?type=album&id=477294&width=300&trackid=1932670" },
-              { title: "Lo-Fi Beats", image: "https://usercontent.jamendo.com?type=album&id=144705&width=300&trackid=1204669" },
+              { title: "EL ARTE DE AMAR- BOSSA NOVA", image: "https://usercontent.jamendo.com?type=album&id=589582&width=300" ,id:"589582"},
+              { title: "i-motions - EP", image: "https://usercontent.jamendo.com?type=album&id=472284&width=300", id:"472284" },
+              { title: "Your Secret Album ", image: "https://usercontent.jamendo.com?type=album&id=188568&width=300",id:"188568" },
+              { title: "MainStay", image: "https://usercontent.jamendo.com?type=album&id=195682&width=300", id:"195682" },
+              { title: "ShiHo", image: "https://usercontent.jamendo.com?type=album&id=156519&width=300",id:"156519"},
             ].map((item, index) => (
               
               <TouchableOpacity key={index} style={styles.card} >
