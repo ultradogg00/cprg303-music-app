@@ -98,28 +98,30 @@ const Library = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.pageTitleText}>Library</Text>
-      <View style={styles.tabContainer}>
-        <TouchableWithoutFeedback onPress={selectAllTab}>
-          <Text style={selectedTab == "all" ? styles.selectedTab : styles.unselectedTab}>
-            All
-          </Text>
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={selectAlbumsTab}>
-          <Text style={selectedTab == "albums" ? styles.selectedTab : styles.unselectedTab}>
-            Albums
-          </Text>
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={selectPlaylistsTab}>
-          <Text style={selectedTab == "playlists" ? styles.selectedTab : styles.unselectedTab}>
-            Playlists
-          </Text>
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={selectFavoritesTab}>
-          <Text style={selectedTab == "favorites" ? styles.selectedTab : styles.unselectedTab}>
-            Favorites
-          </Text>
-        </TouchableWithoutFeedback>
-      </View>
+      <ScrollView horizontal={true} style={{display: "flex"}} showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
+        <View style={styles.tabContainer}>
+          <TouchableWithoutFeedback onPress={selectAllTab}>
+            <Text style={selectedTab == "all" ? styles.selectedTab : styles.unselectedTab}>
+              All
+            </Text>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={selectAlbumsTab}>
+            <Text style={selectedTab == "albums" ? styles.selectedTab : styles.unselectedTab}>
+              Albums
+            </Text>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={selectPlaylistsTab}>
+            <Text style={selectedTab == "playlists" ? styles.selectedTab : styles.unselectedTab}>
+              Playlists
+            </Text>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={selectFavoritesTab}>
+            <Text style={selectedTab == "favorites" ? styles.selectedTab : styles.unselectedTab}>
+              Favorites
+            </Text>
+          </TouchableWithoutFeedback>
+        </View>
+      </ScrollView>
       <ScrollView style={{paddingTop: 50, paddingRight: 30, paddingLeft: 10, display: "flex"}}>
         {
           filteredData.map((musicCollection) => {
@@ -156,7 +158,7 @@ const Library = () => {
 export default Library
 
 const styles = StyleSheet.create({
-  container: {display: "flex", flex: 1},
+  container: {display: "flex", flex: 1, marginTop: 50},
   tabContainer: {display: "flex", flexDirection: "row", paddingLeft: 20},
   pageTitleText: {fontSize: 30, fontWeight: "bold", padding: 20},
   unselectedTab: {fontSize: 20, fontWeight: "semibold", paddingBottom: 5, paddingHorizontal: 15},

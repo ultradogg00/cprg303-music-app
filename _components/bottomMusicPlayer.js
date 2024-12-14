@@ -20,15 +20,16 @@ const BottomMusicPlayer = () => {
         }
     }
     
+  
   return (
-    <View style={styles.musicPlayerContainer}>
+  <View style={styles.musicPlayerContainer}>
     <Image
     //   source={{ uri: songObj.album_image }}
       source={{ uri: "https://usercontent.jamendo.com?type=album&id=404140&width=300&trackid=1532771" }}
       style={styles.playerImage}
     />
     <Text style={styles.songTitle}>name</Text>
-    <TouchableOpacity onPress={HandlePlayPause}>
+    <TouchableOpacity onPress={HandlePlayPause} style={styles.playButton}>
       <Image
         source={{
           uri: isPlaying
@@ -39,9 +40,6 @@ const BottomMusicPlayer = () => {
       />
     </TouchableOpacity>
   </View>
-
-
-
   )
 }
 
@@ -49,20 +47,18 @@ export default BottomMusicPlayer
 
 
 const styles = StyleSheet.create({
-
-  
     musicPlayerContainer: {
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
       paddingHorizontal: 15,
       paddingVertical: 6,
-      backgroundColor: "#C69AFF",
+      backgroundColor: "#31006F",
       borderTopLeftRadius: 20,
       borderTopRightRadius: 20,
       //shadow effect
       shadowColor: "grey",
-      shadowOffset: { height: -3 },
+      shadowOffset: { height: -5 },
       shadowOpacity: 0.5,
       shadowRadius: 5,
       elevation: 5,
@@ -78,10 +74,19 @@ const styles = StyleSheet.create({
       fontSize: 16,
       flex: 1,
       marginLeft: 10,
+      color: "white",
     },
   
+    playButton: {
+      width: 50,
+      height: 50,
+      borderRadius: 25, // Make it a circle
+      backgroundColor: '#C69AFF',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     playIcon: {
       width: 25,
       height: 25,
-    }
+    },
 })

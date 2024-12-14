@@ -127,12 +127,12 @@ export default function HomeScreen() {
               { title: "ShiHo", image: "https://usercontent.jamendo.com?type=album&id=156519&width=300",id:"156519"},
             ].map((item, index) => (
               
-              <TouchableOpacity key={index} style={styles.card} >
-                <Link href={`/details/${item.id}`} style={{ flex: 1 }}>
-                <Image source={{ uri: item.image }} style={styles.cardImage} />
-                <Text style={styles.cardText}>{item.title}</Text>
-                </Link>
-              </TouchableOpacity>
+              <Link href={`/details/${item.id}`} style={{margin:5}}>
+                <TouchableOpacity key={index} style={styles.card}>
+                  <Image source={{ uri: item.image }} style={styles.cardImage} />
+                  <Text style={styles.cardText}>{item.title}</Text>
+                </TouchableOpacity>
+              </Link>
 
             ))}
           </View>
@@ -263,7 +263,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 18,
     marginLeft: 18,
-    marginTop: 7,
+    marginTop: 20,
   },
 
   sectionContainer: {
@@ -291,9 +291,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingRight: 10,
     width: 170,
-    margin: 5,
+    margin: 15,
     alignItems: "center",
     justifyContent: "flex-start", 
+    //create a shadow effect
+    shadowColor: "grey",
+    shadowOffset: { width: 2, height: 3 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+    elevation: 5, 
   },
   
   // Image in the card
@@ -379,38 +385,5 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
   },
 
-  musicPlayerContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: 15,
-    paddingVertical: 6,
-    backgroundColor: "#C69AFF",
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    //shadow effect
-    shadowColor: "grey",
-    shadowOffset: { height: -3 },
-    shadowOpacity: 0.5,
-    shadowRadius: 5,
-    elevation: 5,
-  },
-
-  playerImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 5,
-  },
-
-  songTitle: {
-    fontSize: 16,
-    flex: 1,
-    marginLeft: 10,
-  },
-
-  playIcon: {
-    width: 25,
-    height: 25,
-  },
 });
 
