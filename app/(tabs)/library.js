@@ -1,6 +1,6 @@
 import { Button, Image, ScrollView, StyleSheet, Text, Touchable, TouchableHighlight, View } from 'react-native'
 import React, { useState } from 'react'
-import BottomMusicPlayer from '../_components/bottomMusicPlayer'
+import BottomMusicPlayer from '../../_components/bottomMusicPlayer'
 import { TouchableWithoutFeedback } from 'react-native'
 
 const data = [

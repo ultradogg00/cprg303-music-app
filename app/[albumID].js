@@ -1,15 +1,16 @@
-import { Image, Pressable, ScrollView, StyleSheet, Text, Touchable, TouchableOpacity, View, ImageBackground } from 'react-native'
+import { Image, Pressable, ScrollView, StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Link, useLocalSearchParams, useRouter } from 'expo-router'
-import BottomMusicPlayer from '../../_components/bottomMusicPlayer';
-import { getApiAlbum } from '../../_components/service';
-import { useAudio } from '../../_components/audioProvider';
+import BottomMusicPlayer from '../_components/bottomMusicPlayer';
+import { getApiAlbum } from '../_components/service';
 import { LinearGradient } from 'expo-linear-gradient';
+import { ImageBackground } from 'react-native';
+import { useAudio } from '../_components/audioProvider';
 import { Sound } from 'expo-av/build/Audio';
 
 const AlbumSongs = () => {
-  const {albumID} = useLocalSearchParams();
+  const { albumID } = useLocalSearchParams();
   const [songs,setSongs] =useState([]);
   const [albumInfo,setAlbumInfo] = useState(null);
   const { play, pause,  isPlaying, setIsPlaying, currentTrack } = useAudio();
@@ -17,10 +18,17 @@ const AlbumSongs = () => {
 
 
   async function getAlbum() {
-    const results = await getApiAlbum(albumID);
-    // console.log(results)
-    setSongs(results[0].tracks);
-    setAlbumInfo(results[0]);
+    try {
+      const results = await getApiAlbum(albumID);
+      if (results && results.length > 0) {
+        setSongs(results[0].tracks || []);
+        setAlbumInfo(results[0]);
+      } else {
+        console.error('No album data found');
+      }
+    } catch (error) {
+      console.error('Error fetching album data:', error);
+    }
   }
 
  const HandlePlayPause =(url) =>{

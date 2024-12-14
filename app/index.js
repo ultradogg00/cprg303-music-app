@@ -127,8 +127,8 @@ export default function HomeScreen() {
               { title: "ShiHo", image: "https://usercontent.jamendo.com?type=album&id=156519&width=300",id:"156519"},
             ].map((item, index) => (
               
-              <Link href={`/details/${item.id}`} style={{margin:5}}>
-                <TouchableOpacity key={index} style={styles.card}>
+              <Link key={index} href={`/AlbumSongs?albumID=${item.id}`} style={{margin:5}}>
+                <TouchableOpacity  style={styles.card}>
                   <Image source={{ uri: item.image }} style={styles.cardImage} />
                   <Text style={styles.cardText}>{item.title}</Text>
                 </TouchableOpacity>

@@ -1,73 +1,18 @@
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import TabNavigator from './(tabs)/_layout';
+import AlbumSongs from './[albumID]';
+import { AudioProvider } from '../_components/audioProvider';
 
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+const Stack = createNativeStackNavigator();
 
-import { Tabs, useRouter } from 'expo-router'
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import AntDesign from '@expo/vector-icons/AntDesign';
-import AudioProvider from '../_components/audioProvider';
-
-const Layout = () => {
-  const router = useRouter();
-  console.log(router.routes);
+export default function AppStack() {
   return (
     <AudioProvider>
-      {/* <View style={{flex: 1}}> */}
-        <Tabs 
-          screenOptions={{ 
-            tabBarActiveTintColor: "#571AFF",
-            headerShown: false,
-          }}
-        >
-            <Tabs.Screen
-            name="index"
-            options={{
-              title: "Home",
-              tabBarIcon: ({ color }) => (
-                <FontAwesome size={28} name="home" color={color} />
-              ),
-           
-            }}
-            
-            ></Tabs.Screen>
-            <Tabs.Screen
-            name="library"
-            options={{
-              title: "Library",
-              tabBarIcon: ({ color }) => (
-                <MaterialIcons name="library-music" size={28} color={color} />
-              ),
-            }}
-            
-            ></Tabs.Screen>
-            <Tabs.Screen
-            name="search"
-            options={{
-              title: "Search",
-              tabBarIcon: ({ color }) => (
-                <AntDesign name="search1" size={28} color={color} />
-              ),
-            }}
-            
-            ></Tabs.Screen>
-            <Tabs.Screen 
-            name="details/[albumID]"
-            options={{
-              title: "f",
-              tabBarButton: () => null,
-            }}
-            
-            ></Tabs.Screen>
-            {/* <Tabs.Screen></Tabs.Screen> */}
-        </Tabs>
-
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(tabs)" component={TabNavigator} />
+        <Stack.Screen name="[albumID]" component={AlbumSongs} />
+      </Stack.Navigator>
     </AudioProvider>
-  )
+  );
 }
-
-
-
-export default Layout
-
-const styles = StyleSheet.create({})
