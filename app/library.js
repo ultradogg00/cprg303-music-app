@@ -98,31 +98,29 @@ const Library = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.pageTitleText}>Library</Text>
-      <ScrollView horizontal={true} style={{display: "flex"}} showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
-        <View style={styles.tabContainer}>
-          <TouchableWithoutFeedback onPress={selectAllTab}>
-            <Text style={selectedTab == "all" ? styles.selectedTab : styles.unselectedTab}>
-              All
-            </Text>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={selectAlbumsTab}>
-            <Text style={selectedTab == "albums" ? styles.selectedTab : styles.unselectedTab}>
-              Albums
-            </Text>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={selectPlaylistsTab}>
-            <Text style={selectedTab == "playlists" ? styles.selectedTab : styles.unselectedTab}>
-              Playlists
-            </Text>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={selectFavoritesTab}>
-            <Text style={selectedTab == "favorites" ? styles.selectedTab : styles.unselectedTab}>
-              Favorites
-            </Text>
-          </TouchableWithoutFeedback>
-        </View>
-      </ScrollView>
-      <ScrollView style={{paddingTop: 50, paddingRight: 30, paddingLeft: 10, display: "flex"}}>
+      <View style={styles.tabContainer}>
+        <TouchableWithoutFeedback onPress={selectAllTab}>
+          <Text style={selectedTab == "all" ? styles.selectedTab : styles.unselectedTab}>
+            All
+          </Text>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={selectAlbumsTab}>
+          <Text style={selectedTab == "albums" ? styles.selectedTab : styles.unselectedTab}>
+            Albums
+          </Text>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={selectPlaylistsTab}>
+          <Text style={selectedTab == "playlists" ? styles.selectedTab : styles.unselectedTab}>
+            Playlists
+          </Text>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={selectFavoritesTab}>
+          <Text style={selectedTab == "favorites" ? styles.selectedTab : styles.unselectedTab}>
+            Favorites
+          </Text>
+        </TouchableWithoutFeedback>
+      </View>
+      <ScrollView style={{paddingTop: 20, paddingRight: 20, paddingLeft: 20, display: "flex"}}>
         {
           filteredData.map((musicCollection) => {
             if (musicCollection.type == "playlist") {
@@ -161,9 +159,9 @@ const styles = StyleSheet.create({
   container: {display: "flex", flex: 1, marginTop: 50},
   tabContainer: {display: "flex", flexDirection: "row", paddingLeft: 20},
   pageTitleText: {fontSize: 30, fontWeight: "bold", padding: 20},
-  unselectedTab: {fontSize: 20, fontWeight: "semibold", paddingBottom: 5, paddingHorizontal: 15},
-  selectedTab: {fontSize: 20, fontWeight: "semibold", paddingBottom: 5, paddingHorizontal: 15, color: "rebeccapurple", borderBottomWidth: 3, borderBottomColor: "rebeccapurple"},
-  musicCollectionContainer: {display: "flex", flexDirection: "row", marginBottom: 20},
+  unselectedTab: {fontSize: 18, fontWeight: "semibold", paddingBottom: 5, paddingHorizontal: 12,},
+  selectedTab: {fontSize: 18, fontWeight: "semibold", paddingBottom: 5, paddingHorizontal: 12, color: "rebeccapurple", borderBottomWidth: 3, borderBottomColor: "rebeccapurple"},
+  musicCollectionContainer: {display: "flex", flexDirection: "row", marginBottom: 15},
   musicCollectionImage: {height: 75, width: 75, backgroundColor: "red"},
   musicCollectionTextContainer: {flex: 1, display: "flex", justifyContent: "center", backgroundColor: "#C69AFF", width: "auto", padding: 10, borderTopRightRadius: 10, borderBottomRightRadius: 10}
 })

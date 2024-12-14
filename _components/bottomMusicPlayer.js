@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     playButton: {
       width: 50,
       height: 50,
-      borderRadius: 25, // Make it a circle
+      borderRadius: 25, 
       backgroundColor: '#C69AFF',
       justifyContent: 'center',
       alignItems: 'center',
