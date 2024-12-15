@@ -60,10 +60,10 @@ const Search = () => {
         
         <View>
           <ScrollView>
-            {songList.length === 0 ? <Text>Please enter a song</Text> : 
+            {songList.length === 0 ? <Text>Please enter a song/No song with that name was found</Text> : 
             songList.map((song) => (
             <TouchableOpacity key={song.id} style={{flex:1}} onPress={() => HandlePlayPause(song)}>
-               <Image source={song.image} />
+               <Image source={{uri :song.image}} />
               <View style={{}}>
                 <Text style={styles.songName}>{song.tracks[0].name}</Text>
                 <Text style={styles.songArtist}>{song.artist_name}</Text>
