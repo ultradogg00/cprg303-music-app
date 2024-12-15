@@ -103,7 +103,7 @@ const AlbumSongs = ({params}) => {
           ))}
         </ScrollView>
 
-        {/* Bottom Music Player */}
+        
         <BottomMusicPlayer />
       </LinearGradient>
     </View>

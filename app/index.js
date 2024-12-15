@@ -8,62 +8,62 @@ import Slider from "@react-native-community/slider";
 import BottomMusicPlayer from "../_components/bottomMusicPlayer";
 import { Link, router } from "expo-router";
 export default function HomeScreen() {
-  const [sound, setSound] = useState(null);
+  // const [sound, setSound] = useState(null);
 
-  // const [isPlaying, setIsPlaying] = useState(false);
+  // // const [isPlaying, setIsPlaying] = useState(false);
 
 
-  const audioUrl = "https://prod-1.storage.jamendo.com//?trackid=887202&format=ogg&from=app-devsite";
-  const songObj = getSong(1532771)
-  // Function to load and play sound
-  async function play(songUrl) {
-    // a songobj.audio will be passed
-    const audioUrl = "https://prod-1.storage.jamendo.com//?trackid=887202&format=ogg&from=app-devsite";
+  // const audioUrl = "https://prod-1.storage.jamendo.com//?trackid=887202&format=ogg&from=app-devsite";
+  // const songObj = getSong(1532771)
+  // // Function to load and play sound
+  // async function play(songUrl) {
+  //   // a songobj.audio will be passed
+  //   const audioUrl = "https://prod-1.storage.jamendo.com//?trackid=887202&format=ogg&from=app-devsite";
     
-    try {
-      if (sound) {
-        // Resume playback if sound is already loaded
-        await sound.playAsync();
-        setIsPlaying(true);
-      } else {
-        console.log("Loading Sound...");
-        const { sound } = await Audio.Sound.createAsync(
-          { uri: audioUrl },
-          { shouldPlay: true } // Auto play after loading
-        );
-        setSound(sound);
-        setIsPlaying(true);
+  //   try {
+  //     if (sound) {
+  //       // Resume playback if sound is already loaded
+  //       await sound.playAsync();
+  //       setIsPlaying(true);
+  //     } else {
+  //       console.log("Loading Sound...");
+  //       const { sound } = await Audio.Sound.createAsync(
+  //         { uri: audioUrl },
+  //         { shouldPlay: true } // Auto play after loading
+  //       );
+  //       setSound(sound);
+  //       setIsPlaying(true);
 
-        // Monitor playback status
-        sound.setOnPlaybackStatusUpdate((status) => {
-          if (status.didJustFinish) {
-            console.log("Playback Finished");
-            setIsPlaying(false);
-          }
-        });
-      }
-    } catch (error) {
-      console.error("Error playing sound:", error);
-    }
-  }
+  //       // Monitor playback status
+  //       sound.setOnPlaybackStatusUpdate((status) => {
+  //         if (status.didJustFinish) {
+  //           console.log("Playback Finished");
+  //           setIsPlaying(false);
+  //         }
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.error("Error playing sound:", error);
+  //   }
+  // }
 
-  // Function to pause the sound
-  async function pause() {
-    if (sound) {
-      await sound.pauseAsync();
-      setIsPlaying(false);
-    }
-  }
+  // // Function to pause the sound
+  // async function pause() {
+  //   if (sound) {
+  //     await sound.pauseAsync();
+  //     setIsPlaying(false);
+  //   }
+  // }
 
-  // Clean up the sound when the component unmounts
-  useEffect(() => {
-    return sound
-      ? () => {
-          console.log("Unloading Sound...");
-          sound.unloadAsync();
-        }
-      : undefined;
-  }, [sound]);
+  // // Clean up the sound when the component unmounts
+  // useEffect(() => {
+  //   return sound
+  //     ? () => {
+  //         console.log("Unloading Sound...");
+  //         sound.unloadAsync();
+  //       }
+  //     : undefined;
+  // }, [sound]);
 
   return (
     <View style={styles.container}>
@@ -185,25 +185,6 @@ export default function HomeScreen() {
           </ScrollView>
         </View>
       </ScrollView>
-
-      {/* Bottom Music Player */}
-      {/* <View style={styles.musicPlayerContainer}>
-        <Image
-          source={{ uri: "https://usercontent.jamendo.com?type=album&id=404140&width=300&trackid=1532771" }}
-          style={styles.playerImage}
-        />
-        <Text style={styles.songTitle}>Remember Me</Text>
-        <TouchableOpacity onPress={isPlaying ? pause : play}>
-          <Image
-            source={{
-              uri: isPlaying
-                ? "https://img.icons8.com/ios-filled/50/pause--v1.png"
-                : "https://img.icons8.com/ios-filled/50/play--v1.png",
-            }}
-            style={styles.playIcon}
-          />
-        </TouchableOpacity>
-      </View> */}
       <BottomMusicPlayer/>
     </View>
   );

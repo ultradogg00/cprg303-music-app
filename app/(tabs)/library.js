@@ -2,7 +2,14 @@ import { Button, Image, ScrollView, StyleSheet, Text, Touchable, TouchableHighli
 import React, { useState } from 'react'
 import BottomMusicPlayer from '../../_components/bottomMusicPlayer'
 import { TouchableWithoutFeedback } from 'react-native'
-
+const tempData = [
+  { title: "Sky Dragons", image: "https://usercontent.jamendo.com?type=album&id=573197&width=300" ,id:"573197" },
+  { title: "EL ARTE DE AMAR- BOSSA NOVA", image: "https://usercontent.jamendo.com?type=album&id=589582&width=300" ,id:"589582"},
+  { title: "i-motions - EP", image: "https://usercontent.jamendo.com?type=album&id=472284&width=300", id:"472284" },
+  { title: "Your Secret Album ", image: "https://usercontent.jamendo.com?type=album&id=188568&width=300",id:"188568" },
+  { title: "MainStay", image: "https://usercontent.jamendo.com?type=album&id=195682&width=300", id:"195682" },
+  { title: "ShiHo", image: "https://usercontent.jamendo.com?type=album&id=156519&width=300",id:"156519"},
+]
 const data = [
   {
     type: "playlist",
@@ -18,10 +25,11 @@ const data = [
   },
   {
     type: "album",
-    artist: "XXXTentacion",
+    artist: "Sky Dragons",
     name: "LOOK AT ME: THE ALBUM",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/en/5/57/XXXTentacion_Look_at_Me_album_cover.jpg",
+    imageUrl: "https://usercontent.jamendo.com?type=album&id=573197&width=300",
     favorite: true,
+    id: 589582,
   },
   {
     type: "playlist",
@@ -120,7 +128,7 @@ const Library = () => {
           </Text>
         </TouchableWithoutFeedback>
       </View>
-      <ScrollView style={{paddingTop: 20, paddingRight: 20, paddingLeft: 20, display: "flex"}}>
+      <ScrollView style={{paddingTop: 20, paddingRight: 20, paddingLeft: 20, display: "flex", marginBottom:5}}>
         {
           filteredData.map((musicCollection) => {
             if (musicCollection.type == "playlist") {

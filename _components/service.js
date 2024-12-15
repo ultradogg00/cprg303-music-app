@@ -43,16 +43,21 @@ export const getApiAlbum=async(id)=>{
        
         const response = await fetch(URl)
         let data =  await response.json()
-        console.log(data.results)
+        // console.log(data.results)
         return data.results
-         console.log(data.results)
+        
         
     } catch (error) {
        throw error
         
     }
 };
-export const addToPlayList = async (params) => {
+export const searchSongByName = async (name) => {
+    let URl  = `https://api.jamendo.com/v3.0/albums/tracks/?client_id=5c19d8f2&format=json&limit=7&track_name=${name}`
+    const response = await fetch(URl)
+    let data =  await response.json()
+    // console.log(data.results)
+    return data.results
     
 }
 
