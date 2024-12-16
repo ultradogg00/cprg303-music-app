@@ -3,15 +3,15 @@ import React, { useState } from 'react'
 import BottomMusicPlayer from '../../_components/bottomMusicPlayer'
 import { TouchableWithoutFeedback } from 'react-native'
 import { router } from 'expo-router'
-const data = [
-  {  type: "album",name: "Sky Dragons", imageUrl: "https://usercontent.jamendo.com?type=album&id=573197&width=300" ,id:"573197",favorite: true, },
-  {  type: "album",name: "EL ARTE DE AMAR- BOSSA NOVA", imageUrl: "https://usercontent.jamendo.com?type=album&id=589582&width=300" ,id:"589582",favorite: false,},
-  {  type: "album",name: "i-motions - EP", imageUrl: "https://usercontent.jamendo.com?type=album&id=472284&width=300", id:"472284",favorite: true, },
-  {  type: "album",name: "Metal Butterfiles ", imageUrl: "https://usercontent.jamendo.com?type=album&id=188568&width=300",id:"188568",favorite: false, },
-  {  type: "album",name: "MainStay", imageUrl: "https://usercontent.jamendo.com?type=album&id=195682&width=300", id:"195682",favorite: true, },
-  { type: "album",name: "ShiHo", imageUrl: "https://usercontent.jamendo.com?type=album&id=156519&width=300",id:"156519",favorite: false,},
-  { type: "album",name: "New To You", imageUrl: "https://usercontent.jamendo.com?type=album&id=184380&width=300",id:"184380",favorite: false,},
-]
+export const data = [
+  { type: "album", artist: "Pharmacopia", name: "Sky Dragons", imageUrl: "https://usercontent.jamendo.com?type=album&id=573197&width=300", id: "573197", favorite: true },
+  { type: "album", artist: "Bossanova", name: "EL ARTE DE AMAR- BOSSA NOVA", imageUrl: "https://usercontent.jamendo.com?type=album&id=589582&width=300", id: "589582", favorite: false },
+  { type: "album", artist: "Rxbyn", name: "i-motions - EP", imageUrl: "https://usercontent.jamendo.com?type=album&id=472284&width=300", id: "472284", favorite: true },
+  { type: "album", artist: "All My Friends Hate Me", name: "Metal Butterflies", imageUrl: "https://usercontent.jamendo.com?type=album&id=188568&width=300", id: "188568", favorite: false },
+  { type: "album", artist: "Anitek", name: "MainStay", imageUrl: "https://usercontent.jamendo.com?type=album&id=195682&width=300", id: "195682", favorite: true },
+  { type: "album", artist: "Anitek", name: "ShiHo", imageUrl: "https://usercontent.jamendo.com?type=album&id=156519&width=300", id: "156519", favorite: false },
+  { type: "album", artist: "Samie Bower", name: "New To You", imageUrl: "https://usercontent.jamendo.com?type=album&id=184380&width=300", id: "184380", favorite: false },
+];
 
 
 const Library = () => {

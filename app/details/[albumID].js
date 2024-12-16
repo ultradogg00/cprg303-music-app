@@ -14,9 +14,9 @@ const AlbumSongs = ({params}) => {
   const { albumID } = useGlobalSearchParams();
   console.dir(albumID)
   const [songs,setSongs] =useState([]);
+  const [selectedSongId, setSelectedSongId] = useState(null);
   const [albumInfo,setAlbumInfo] = useState(null);
   const { play, pause,  isPlaying, setIsPlaying, currentTrack ,albumImg, setAlbumImg } = useAudio();
-
 
 
   async function getAlbum() {
@@ -37,11 +37,10 @@ const AlbumSongs = ({params}) => {
  const HandlePlayPause =(obj) =>{
 
         setAlbumImg(albumInfo.image)
-          play(obj)
+        play(obj)
+        setSelectedSongId(obj.id);
           // setIsPlaying(true)
-        
     }
-    
 
   useEffect( () =>{
     getAlbum();
@@ -49,8 +48,8 @@ const AlbumSongs = ({params}) => {
     console.dir(songs)
     console.dir(params)
   },[albumID]
-
   )
+  
   const router = useRouter();
   return (
     <View style={styles.container}>
@@ -88,23 +87,33 @@ const AlbumSongs = ({params}) => {
         <Ionicons name="arrow-back" size={30} color="white" />
       </TouchableOpacity>
 
-      {/* Gradiant for song list*/}
+      {/* Gradient for song list */}
       <LinearGradient colors={['#31006F', 'transparent']} style={styles.contentGradient}>
         {/* Songs */}
         <ScrollView style={styles.songsContainer}>
           {songs.map((song) => (
-            <TouchableOpacity key={song.id} style={styles.songItem} onPress={() => HandlePlayPause(song)}>
+            <TouchableOpacity
+              key={song.id}
+              style={[
+                styles.songItem,
+                selectedSongId === song.id && styles.selectedSongItem,
+              ]}
+              onPress={() => HandlePlayPause(song)}
+            >
               <View style={styles.songDetails}>
                 <Text style={styles.songName}>{song.name}</Text>
                 <Text style={styles.songArtist}>{song.artist}</Text>
               </View>
-              <Ionicons name="play-circle" size={30} color="#fff" />
+              <Ionicons name="ellipsis-vertical" size={30} color="#fff" />
             </TouchableOpacity>
           ))}
         </ScrollView>
 
-        
+        {/* Bottom Music Player */}
         <BottomMusicPlayer />
+
+        {/* Bottom Margin */}
+        <View style={styles.bottomMargin} />
       </LinearGradient>
     </View>
   );
@@ -119,7 +128,7 @@ const styles = StyleSheet.create({
 
   headerImage: {
     width: '100%',
-    height: 280,
+    height: 310,
   },
 
   headerGradient: {
@@ -151,7 +160,7 @@ const styles = StyleSheet.create({
   albumImageContainer: {
     width: 150,
     height: 150,
-    marginBottom: 10,
+    marginBottom: 30,
     shadowColor: '#31006F',
     shadowOffset: { width: 0, height: 25 },
     shadowOpacity: 2,
@@ -162,7 +171,7 @@ const styles = StyleSheet.create({
   albumImage: {
     width: '100%',
     height: '100%',
-    marginTop: 25,
+    marginTop: 10,
   },
 
   albumHeaderContainer: {
@@ -200,8 +209,14 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 
+  selectedSongItem: {
+    backgroundColor: '#C69AFF',
+  },
+
   songDetails: {
+    flex: 1,
     flexDirection: 'column',
+    marginRight: 10,
   },
 
   songName: {
@@ -213,6 +228,11 @@ const styles = StyleSheet.create({
   songArtist: {
     color: 'white',
     fontSize: 14,
+  },
+
+  bottomMargin: {
+    height: 20,
+    backgroundColor: '#31006F',
   },
 
 });
